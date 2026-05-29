@@ -30,362 +30,392 @@
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    overflow-x: hidden;
-  }
-
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg2); }
-  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
-  ::selection { background: var(--red); color: #fff; }
+  body { background:var(--bg); color:var(--text); font-family:var(--font-body); font-size:16px; overflow-x:hidden; }
+  ::-webkit-scrollbar { width:4px; }
+  ::-webkit-scrollbar-track { background:var(--bg2); }
+  ::-webkit-scrollbar-thumb { background:var(--red); border-radius:2px; }
+  ::selection { background:var(--red); color:#fff; }
   body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpolygon points='2,2 2,14 6,10 9,17 11,16 8,9 14,9' fill='%23FF4655' stroke='%230F0F13' stroke-width='1.5'/%3E%3C/svg%3E") 2 2, auto; }
 
-  /* ── PAGE TRANSITIONS ── */
+  /* ── PAGE ── */
   .page { display:none; min-height:100vh; }
   .page.active { display:block; animation: pageIn 0.35s cubic-bezier(0.22,1,0.36,1) both; }
-  @keyframes pageIn {
-    from { opacity:0; transform:translateY(16px); }
-    to   { opacity:1; transform:none; }
-  }
+  @keyframes pageIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 
   /* ── NAV ── */
   nav {
-    position: fixed; top:0; left:0; right:0; z-index:100;
-    background: rgba(15,15,19,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    height: 64px;
-    display: flex; align-items: center;
-    padding: 0 2rem;
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(15,15,19,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border); height:64px;
+    display:flex; align-items:center; padding:0 2rem;
     animation: navDrop 0.5s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes navDrop {
-    from { transform:translateY(-100%); opacity:0; }
-    to   { transform:none; opacity:1; }
-  }
+  @keyframes navDrop { from{transform:translateY(-100%);opacity:0} to{transform:none;opacity:1} }
   .nav-logo {
-    font-family: var(--font-title);
-    font-size: 2rem; letter-spacing: 3px;
-    color: var(--text); margin-right: auto;
-    display: flex; align-items: center; gap: 8px;
-    text-decoration: none; cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    font-family:var(--font-title); font-size:2rem; letter-spacing:3px;
+    color:var(--text); margin-right:auto; display:flex; align-items:center; gap:8px;
+    text-decoration:none; cursor:pointer; transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .nav-logo:hover { transform: scale(1.04); }
-  .nav-logo span { color: var(--red); }
+  .nav-logo:hover { transform:scale(1.04); }
+  .nav-logo span { color:var(--red); }
   .nav-logo-icon {
-    width: 28px; height: 28px;
-    background: var(--red);
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    width:28px; height:28px; background:var(--red);
+    clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+    transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .nav-logo:hover .nav-logo-icon { transform: rotate(90deg) scale(1.15); }
+  .nav-logo:hover .nav-logo-icon { transform:rotate(90deg) scale(1.15); }
   .nav-links { display:flex; gap:0; align-items:center; }
   .nav-link {
-    padding: 0 1.2rem; height: 64px;
-    display: flex; align-items: center;
-    color: var(--text2);
-    font-family: var(--font-body); font-weight: 700;
-    font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; position: relative;
-    transition: color 0.2s;
-    border: none; background: none;
+    padding:0 1.2rem; height:64px; display:flex; align-items:center;
+    color:var(--text2); font-family:var(--font-body); font-weight:700;
+    font-size:0.8rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; position:relative; transition:color 0.2s;
+    border:none; background:none;
   }
   .nav-link::after {
     content:''; position:absolute; bottom:0; left:1.2rem; right:1.2rem; height:2px;
-    background: var(--red);
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    background:var(--red); transform:scaleX(0); transform-origin:left;
+    transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .nav-link:hover, .nav-link.active { color: var(--text); }
-  .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+  .nav-link:hover, .nav-link.active { color:var(--text); }
+  .nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
   .nav-cart-btn {
-    margin-left: 0.5rem; padding: 0 1rem; height: 40px;
-    background: var(--red); color: #fff; border: none;
-    font-family: var(--font-body); font-weight: 700;
-    font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer; display: flex; align-items: center; gap: 8px;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-    transition: background 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    margin-left:0.5rem; padding:0 1rem; height:40px;
+    background:var(--red); color:#fff; border:none;
+    font-family:var(--font-body); font-weight:700; font-size:0.75rem;
+    letter-spacing:2px; text-transform:uppercase; cursor:pointer;
+    display:flex; align-items:center; gap:8px;
+    clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+    transition:background 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    position:relative;
   }
-  .nav-cart-btn:hover { background: var(--red-dark); transform: translateY(-2px); }
-  .nav-cart-btn:active { transform: scale(0.97); }
+  .nav-cart-btn:hover { background:var(--red-dark); transform:translateY(-2px); }
+  .nav-cart-btn:active { transform:scale(0.97); }
   #cartCount {
-    background: #fff; color: var(--red);
-    border-radius: 50%; width: 18px; height: 18px;
-    font-size: 0.65rem; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    background:#fff; color:var(--red); border-radius:50%;
+    width:18px; height:18px; font-size:0.65rem; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
   }
-  #cartCount.bump { transform: scale(1.7); }
+  #cartCount.bump { transform:scale(1.7); }
+
+  /* ── SEARCH BAR ── */
+  .search-wrap {
+    display:flex; align-items:center; gap:0;
+    background:var(--bg3); border:1px solid var(--border2);
+    margin-bottom:2.5rem;
+    clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    transition:border-color 0.2s;
+  }
+  .search-wrap:focus-within { border-color:var(--red); }
+  .search-icon { padding:0 0.8rem; color:var(--text3); font-size:1rem; }
+  #searchInput {
+    flex:1; padding:0.6rem 0.8rem 0.6rem 0; background:transparent;
+    border:none; color:var(--text); font-family:var(--font-body); font-size:0.9rem; outline:none;
+  }
+  #searchInput::placeholder { color:var(--text3); }
+  .search-clear {
+    padding:0 0.8rem; background:none; border:none; color:var(--text3);
+    cursor:pointer; font-size:1rem; transition:color 0.2s;
+    display:none;
+  }
+  .search-clear:hover { color:var(--red); }
+  .search-clear.visible { display:block; }
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh; padding-top: 64px;
-    display: flex; align-items: center;
-    position: relative; overflow: hidden;
+    min-height:100vh; padding-top:64px;
+    display:flex; align-items:center; position:relative; overflow:hidden;
   }
   .hero-bg {
-    position: absolute; inset:0;
+    position:absolute; inset:0;
     background:
-      radial-gradient(ellipse 60% 80% at 70% 50%, rgba(255,70,85,0.08) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 80% 80%, rgba(0,229,204,0.04) 0%, transparent 60%);
+      radial-gradient(ellipse 60% 80% at 70% 50%,rgba(255,70,85,0.08) 0%,transparent 70%),
+      radial-gradient(ellipse 40% 60% at 80% 80%,rgba(0,229,204,0.04) 0%,transparent 60%);
   }
   .hero-grid {
-    position: absolute; inset:0; overflow:hidden; opacity:0.06;
+    position:absolute; inset:0; overflow:hidden; opacity:0.06;
     background-image:
-      linear-gradient(var(--red) 1px, transparent 1px),
-      linear-gradient(90deg, var(--red) 1px, transparent 1px);
-    background-size: 60px 60px;
-    animation: gridDrift 20s linear infinite;
+      linear-gradient(var(--red) 1px,transparent 1px),
+      linear-gradient(90deg,var(--red) 1px,transparent 1px);
+    background-size:60px 60px;
+    animation:gridDrift 20s linear infinite;
   }
-  @keyframes gridDrift {
-    from { background-position: 0 0; }
-    to   { background-position: 60px 60px; }
-  }
-  .hero-content {
-    position: relative; z-index:2;
-    padding: 0 4rem; max-width: 680px;
-  }
+  @keyframes gridDrift { from{background-position:0 0} to{background-position:60px 60px} }
+  .hero-content { position:relative; z-index:2; padding:0 4rem; max-width:680px; }
   .hero-eyebrow {
-    font-family: var(--font-mono); font-size: 0.75rem;
-    color: var(--red); letter-spacing: 4px; text-transform: uppercase;
-    margin-bottom: 1.2rem; display: flex; align-items: center; gap: 12px;
-    animation: slideRight 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) both;
+    font-family:var(--font-mono); font-size:0.75rem; color:var(--red);
+    letter-spacing:4px; text-transform:uppercase; margin-bottom:1.2rem;
+    display:flex; align-items:center; gap:12px;
+    animation:slideRight 0.7s 0.15s cubic-bezier(0.22,1,0.36,1) both;
   }
-  .hero-eyebrow::before { content:''; display: block; width:32px; height:1px; background: var(--red); }
+  .hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--red); }
   .hero-title {
-    font-family: var(--font-title);
-    font-size: clamp(4rem, 8vw, 7rem);
-    line-height: 0.92; letter-spacing: 2px;
-    margin-bottom: 1.5rem; text-transform: uppercase;
-    animation: slideRight 0.7s 0.25s cubic-bezier(0.22,1,0.36,1) both;
+    font-family:var(--font-title); font-size:clamp(4rem,8vw,7rem);
+    line-height:0.92; letter-spacing:2px; margin-bottom:1.5rem; text-transform:uppercase;
+    animation:slideRight 0.7s 0.25s cubic-bezier(0.22,1,0.36,1) both;
   }
   .hero-title em { font-style:normal; color:var(--red); display:block; text-shadow:0 0 40px var(--red-glow); }
   .hero-desc {
-    color: var(--text2); font-size: 1.05rem; line-height: 1.7;
-    margin-bottom: 2.5rem; max-width: 480px;
-    animation: slideRight 0.7s 0.35s cubic-bezier(0.22,1,0.36,1) both;
+    color:var(--text2); font-size:1.05rem; line-height:1.7; margin-bottom:2.5rem; max-width:480px;
+    animation:slideRight 0.7s 0.35s cubic-bezier(0.22,1,0.36,1) both;
   }
   .hero-actions {
     display:flex; gap:1rem; align-items:center; flex-wrap:wrap;
-    animation: slideRight 0.7s 0.45s cubic-bezier(0.22,1,0.36,1) both;
+    animation:slideRight 0.7s 0.45s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes slideRight {
-    from { opacity:0; transform:translateX(-28px); }
-    to   { opacity:1; transform:none; }
-  }
+  @keyframes slideRight { from{opacity:0;transform:translateX(-28px)} to{opacity:1;transform:none} }
   .hero-stats {
-    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
-    display: flex; flex-direction:column; gap:1.5rem; z-index:2;
-    animation: slideLeft 0.7s 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    position:absolute; right:4rem; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:1.5rem; z-index:2;
+    animation:slideLeft 0.7s 0.5s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes slideLeft {
-    from { opacity:0; transform: translateX(28px) translateY(-50%); }
-    to   { opacity:1; transform: translateY(-50%); }
-  }
-  .hero-stat { text-align: right; padding-right: 1rem; border-right: 2px solid var(--red); }
-  .hero-stat-n { font-family: var(--font-title); font-size: 2.5rem; line-height: 1; color: var(--text); }
-  .hero-stat-l { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text3); letter-spacing: 2px; text-transform: uppercase; }
+  @keyframes slideLeft { from{opacity:0;transform:translateX(28px) translateY(-50%)} to{opacity:1;transform:translateY(-50%)} }
+  .hero-stat { text-align:right; padding-right:1rem; border-right:2px solid var(--red); }
+  .hero-stat-n { font-family:var(--font-title); font-size:2.5rem; line-height:1; color:var(--text); }
+  .hero-stat-l { font-family:var(--font-mono); font-size:0.65rem; color:var(--text3); letter-spacing:2px; text-transform:uppercase; }
 
   /* ── BUTTONS ── */
   .btn-primary {
-    padding: 0 2rem; height: 48px;
-    background: var(--red); color: #fff; border: none;
-    font-family: var(--font-body); font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer;
-    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-    transition: background 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
-    display: flex; align-items: center; gap: 8px;
+    padding:0 2rem; height:48px; background:var(--red); color:#fff; border:none;
+    font-family:var(--font-body); font-weight:700; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;
+    cursor:pointer; clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    transition:background 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    display:flex; align-items:center; gap:8px;
   }
-  .btn-primary:hover { background: var(--red-dark); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,70,85,0.3); }
-  .btn-primary:active { transform: translateY(-1px) scale(0.98); }
+  .btn-primary:hover { background:var(--red-dark); transform:translateY(-3px); box-shadow:0 8px 24px rgba(255,70,85,0.3); }
+  .btn-primary:active { transform:translateY(-1px) scale(0.98); }
   .btn-ghost {
-    padding: 0 2rem; height: 48px;
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border);
-    font-family: var(--font-body); font-weight: 700;
-    font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;
-    cursor: pointer;
-    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-    transition: border-color 0.2s, color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    padding:0 2rem; height:48px; background:transparent; color:var(--text);
+    border:1px solid var(--border); font-family:var(--font-body); font-weight:700;
+    font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; cursor:pointer;
+    clip-path:polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+    transition:border-color 0.2s, color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .btn-ghost:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
-  .btn-ghost:active { transform: scale(0.97); }
+  .btn-ghost:hover { border-color:var(--red); color:var(--red); transform:translateY(-2px); }
+  .btn-ghost:active { transform:scale(0.97); }
 
   /* ── SECTION ── */
-  .section { padding: 6rem 4rem; }
-  .section-header { margin-bottom: 3rem; }
+  .section { padding:6rem 4rem; }
+  .section-header { margin-bottom:3rem; }
   .section-label {
-    font-family: var(--font-mono); font-size: 0.7rem; color: var(--red);
-    letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem;
-    display: flex; align-items:center; gap:8px;
+    font-family:var(--font-mono); font-size:0.7rem; color:var(--red);
+    letter-spacing:4px; text-transform:uppercase; margin-bottom:0.5rem;
+    display:flex; align-items:center; gap:8px;
   }
   .section-label::before { content:''; display:block; width:20px; height:1px; background:var(--red); }
-  .section-title { font-family: var(--font-title); font-size: clamp(2.2rem, 4vw, 3rem); letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
-  .section-title span { color: var(--red); }
+  .section-title { font-family:var(--font-title); font-size:clamp(2.2rem,4vw,3rem); letter-spacing:2px; text-transform:uppercase; line-height:1; }
+  .section-title span { color:var(--red); }
+
+  /* ── CATALOG TABS (new) ── */
+  .catalog-tabs { display:flex; border-bottom:1px solid var(--border2); margin-bottom:2rem; }
+  .catalog-tab {
+    padding:0.7rem 1.5rem; background:none; border:none; border-bottom:2px solid transparent;
+    color:var(--text2); font-family:var(--font-body); font-weight:700; font-size:0.8rem;
+    letter-spacing:2px; text-transform:uppercase; cursor:pointer; margin-bottom:-1px;
+    transition:color 0.2s, border-color 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .catalog-tab.active { color:var(--text); border-bottom-color:var(--red); }
+  .catalog-tab:hover:not(.active) { color:var(--text); }
 
   /* ── FILTERS ── */
-  .filters { display: flex; gap:0.5rem; flex-wrap:wrap; margin-bottom: 2.5rem; }
+  .filters { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:2rem; }
   .filter-btn {
-    padding: 0.45rem 1.2rem;
-    background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--text2); font-family: var(--font-body); font-weight: 600;
-    font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase;
-    cursor: pointer;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    padding:0.45rem 1.2rem; background:var(--bg3); border:1px solid var(--border2);
+    color:var(--text2); font-family:var(--font-body); font-weight:600;
+    font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
+    clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .filter-btn.active, .filter-btn:hover { background: var(--red); border-color: var(--red); color: #fff; transform: translateY(-2px); }
+  .filter-btn.active, .filter-btn:hover { background:var(--red); border-color:var(--red); color:#fff; transform:translateY(-2px); }
   .rarity-select {
-    padding: 0.45rem 1rem; background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--text2); font-family: var(--font-mono); font-size: 0.75rem;
-    cursor: pointer; appearance: none; padding-right: 2rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239090A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 8px center;
-    transition: border-color 0.2s;
+    padding:0.45rem 1rem; background:var(--bg3); border:1px solid var(--border2);
+    color:var(--text2); font-family:var(--font-mono); font-size:0.75rem;
+    cursor:pointer; appearance:none; padding-right:2rem;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239090A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat:no-repeat; background-position:right 8px center;
+    transition:border-color 0.2s;
   }
-  .rarity-select:focus { outline: 1px solid var(--red); }
+  .rarity-select:focus { outline:1px solid var(--red); }
 
   /* ── SKIN CARDS ── */
-  .skins-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+  .skins-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.5rem; }
   .skin-card {
-    background: var(--bg2); border: 1px solid var(--border2);
-    position: relative; overflow: hidden; cursor: pointer;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    transition: border-color 0.25s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
-    animation: cardAppear 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    background:var(--bg2); border:1px solid var(--border2);
+    position:relative; overflow:hidden; cursor:pointer;
+    clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
+    transition:border-color 0.25s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+    animation:cardAppear 0.5s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes cardAppear {
-    from { opacity:0; transform:translateY(24px) scale(0.97); }
-    to   { opacity:1; transform:none; }
-  }
-  .skin-card:hover { border-color: var(--red); transform: translateY(-6px) scale(1.01); box-shadow: 0 16px 40px rgba(255,70,85,0.15); }
+  .skin-card.in-cart { border-color:rgba(0,229,204,0.35); }
+  .skin-card.in-wishlist .wish-btn { color:var(--red); }
+  @keyframes cardAppear { from{opacity:0;transform:translateY(24px) scale(0.97)} to{opacity:1;transform:none} }
+  .skin-card:hover { border-color:var(--red); transform:translateY(-6px) scale(1.01); box-shadow:0 16px 40px rgba(255,70,85,0.15); }
+  .skin-card.in-cart:hover { border-color:var(--cyan); }
   .skin-card-thumb {
-    height: 180px; display: flex; align-items:center; justify-content:center;
-    position: relative; overflow: hidden;
+    height:180px; display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
   }
+  /* ── GENERATIVE SKIN VISUAL ── */
+  .skin-canvas { position:absolute; inset:0; }
   .skin-card-emoji {
-    font-size: 5rem;
-    filter: drop-shadow(0 4px 20px rgba(255,70,85,0.3));
-    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    user-select: none;
+    font-size:5rem; position:relative; z-index:1;
+    filter:drop-shadow(0 4px 20px rgba(255,70,85,0.3));
+    transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    user-select:none;
   }
-  .skin-card:hover .skin-card-emoji { transform: scale(1.15) rotate(-8deg); }
-  .skin-card-thumb img { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-  .skin-card:hover .skin-card-thumb img { transform: scale(1.08) rotate(-2deg); }
+  .skin-card:hover .skin-card-emoji { transform:scale(1.15) rotate(-8deg); }
   .skin-card-rarity {
-    position: absolute; top:12px; left:12px;
-    padding: 3px 8px; font-family: var(--font-mono);
-    font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
-    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+    position:absolute; top:12px; left:12px; z-index:2;
+    padding:3px 8px; font-family:var(--font-mono);
+    font-size:0.6rem; letter-spacing:2px; text-transform:uppercase;
+    clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
   }
-  .rarity-select-only { background: #44449A; color: #BEBEf8; }
-  .rarity-premium { background: #5C4A1E; color: var(--gold-light); }
-  .rarity-exclusive { background: #3A1A2A; color: #F0A0C0; }
-  .rarity-ultra { background: #1A3A2A; color: var(--cyan); }
-  .skin-card-info { padding: 1rem 1.2rem; border-top: 1px solid var(--border2); }
-  .skin-card-bundle { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
-  .skin-card-name { font-family: var(--font-body); font-weight: 700; font-size: 1rem; color: var(--text); margin-bottom: 0.8rem; letter-spacing: 0.5px; }
-  .skin-card-bottom { display: flex; align-items:center; justify-content:space-between; }
-  .skin-card-price { font-family: var(--font-title); font-size: 1.4rem; color: var(--red); letter-spacing: 1px; }
-  .skin-card-price span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text3); display: block; margin-bottom:-2px; }
+  /* Wishlist btn */
+  .wish-btn {
+    position:absolute; top:10px; right:10px; z-index:2;
+    background:rgba(15,15,19,0.75); border:1px solid var(--border2);
+    color:var(--text3); width:30px; height:30px; cursor:pointer;
+    font-size:0.85rem; display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+    transition:color 0.2s, background 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .wish-btn:hover { color:var(--red); background:rgba(255,70,85,0.15); transform:scale(1.15); }
+  /* In-cart badge */
+  .in-cart-badge {
+    position:absolute; bottom:0; left:0; right:0; z-index:2;
+    background:rgba(0,229,204,0.15); border-top:1px solid rgba(0,229,204,0.3);
+    padding:3px 8px; font-family:var(--font-mono); font-size:0.55rem;
+    color:var(--cyan); letter-spacing:2px; text-transform:uppercase;
+    text-align:center; display:none;
+  }
+  .skin-card.in-cart .in-cart-badge { display:block; }
+  .rarity-select-only { background:#44449A; color:#BEBEf8; }
+  .rarity-premium { background:#5C4A1E; color:var(--gold-light); }
+  .rarity-exclusive { background:#3A1A2A; color:#F0A0C0; }
+  .rarity-ultra { background:#1A3A2A; color:var(--cyan); }
+  .skin-card-info { padding:1rem 1.2rem; border-top:1px solid var(--border2); }
+  .skin-card-bundle { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:2px; text-transform:uppercase; margin-bottom:3px; }
+  .skin-card-name { font-family:var(--font-body); font-weight:700; font-size:1rem; color:var(--text); margin-bottom:0.8rem; letter-spacing:0.5px; }
+  .skin-card-bottom { display:flex; align-items:center; justify-content:space-between; }
+  .skin-card-price { font-family:var(--font-title); font-size:1.4rem; color:var(--red); letter-spacing:1px; }
+  .skin-card-price span { font-family:var(--font-mono); font-size:0.65rem; color:var(--text3); display:block; margin-bottom:-2px; }
   .skin-card-add {
-    width: 36px; height: 36px; background: var(--red); border: none; color: #fff;
-    font-size: 1.2rem; cursor: pointer; display: flex; align-items:center; justify-content:center;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-    transition: background 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    width:36px; height:36px; background:var(--red); border:none; color:#fff;
+    font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+    transition:background 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .skin-card-add:hover { background: var(--red-dark); transform: scale(1.15) rotate(90deg); }
-  .skin-card-add:active { transform: scale(0.95); }
+  .skin-card.in-cart .skin-card-add { background:var(--bg4); color:var(--text3); cursor:default; }
+  .skin-card-add:hover:not(:disabled) { background:var(--red-dark); transform:scale(1.15) rotate(90deg); }
   .skin-card-glow {
-    position: absolute; inset:0; pointer-events:none;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255,70,85,0.1) 0%, transparent 65%);
-    opacity:0; transition: opacity 0.3s;
+    position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 0%,rgba(255,70,85,0.1) 0%,transparent 65%);
+    opacity:0; transition:opacity 0.3s;
   }
   .skin-card:hover .skin-card-glow { opacity:1; }
+
+  /* ── BUNDLES VIEW ── */
+  .bundles-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; }
+  .bundle-card {
+    background:var(--bg2); border:1px solid var(--border2); padding:1.5rem;
+    clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));
+    cursor:pointer; transition:border-color 0.25s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    animation:cardAppear 0.4s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .bundle-card:hover { border-color:var(--red); transform:translateY(-4px); }
+  .bundle-card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
+  .bundle-name { font-family:var(--font-title); font-size:1.6rem; letter-spacing:2px; }
+  .bundle-count { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:2px; padding:3px 8px; background:var(--bg3); }
+  .bundle-skins-preview { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .bundle-skin-chip {
+    padding:4px 10px; background:var(--bg3); border:1px solid var(--border2);
+    font-size:0.75rem; color:var(--text2); font-family:var(--font-mono);
+    clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
+  }
+  .bundle-price-range { font-family:var(--font-title); font-size:1.3rem; color:var(--gold-light); }
+  .bundle-price-label { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:2px; }
+
+  /* ── WISHLIST VIEW ── */
+  .wishlist-empty { text-align:center; padding:6rem 2rem; }
+  .wishlist-empty-icon { font-size:4rem; margin-bottom:1rem; opacity:0.3; animation:float 3s ease-in-out infinite; }
+  .wishlist-empty h3 { font-family:var(--font-title); font-size:1.5rem; letter-spacing:2px; color:var(--text2); margin-bottom:0.5rem; }
+  .wishlist-empty p { color:var(--text3); font-size:0.85rem; }
 
   /* ── MODAL ── */
   .modal-overlay {
     display:none; position:fixed; inset:0; z-index:200;
-    background: rgba(0,0,0,0); align-items:center; justify-content:center;
-    transition: background 0.25s;
+    background:rgba(0,0,0,0); align-items:center; justify-content:center;
   }
-  .modal-overlay.open { display:flex; background: rgba(0,0,0,0.8); }
+  .modal-overlay.open { display:flex; background:rgba(0,0,0,0.8); animation:fadeIn 0.2s forwards; }
+  @keyframes fadeIn { from{background:rgba(0,0,0,0)} to{background:rgba(0,0,0,0.8)} }
   .modal {
-    background: var(--bg2); border: 1px solid var(--border);
-    max-width: 520px; width: 90%;
-    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
-    padding: 2.5rem; position: relative; max-height: 90vh; overflow-y:auto;
-    transform: scale(0.88) translateY(20px); opacity:0;
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
+    background:var(--bg2); border:1px solid var(--border);
+    max-width:520px; width:90%;
+    clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,28px 100%,0 calc(100% - 28px));
+    padding:2.5rem; position:relative; max-height:90vh; overflow-y:auto;
+    transform:scale(0.88) translateY(20px); opacity:0;
+    transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s;
   }
-  .modal-overlay.open .modal { transform: none; opacity:1; }
+  .modal-overlay.open .modal { transform:none; opacity:1; }
   .modal-close {
     position:absolute; top:1rem; right:1.5rem;
     background:none; border:none; color:var(--text2);
     font-size:1.5rem; cursor:pointer; font-family:var(--font-title);
-    transition: color 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    transition:color 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .modal-close:hover { color:var(--red); transform: rotate(90deg) scale(1.2); }
-  .modal-thumb { text-align:center; font-size:6rem; margin-bottom:1.5rem; filter: drop-shadow(0 4px 30px rgba(255,70,85,0.4)); }
+  .modal-close:hover { color:var(--red); transform:rotate(90deg) scale(1.2); }
+  .modal-thumb { text-align:center; font-size:6rem; margin-bottom:1.5rem; filter:drop-shadow(0 4px 30px rgba(255,70,85,0.4)); }
   .modal-bundle { font-family:var(--font-mono); font-size:0.65rem; color:var(--text3); letter-spacing:3px; text-transform:uppercase; margin-bottom:4px; }
   .modal-name { font-family:var(--font-title); font-size:2rem; letter-spacing:2px; margin-bottom:1rem; }
   .modal-desc { color:var(--text2); font-size:0.9rem; line-height:1.7; margin-bottom:1.5rem; }
   .modal-tags { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
   .modal-tag {
-    padding: 3px 10px; background: var(--bg3); border: 1px solid var(--border2);
-    font-family: var(--font-mono); font-size:0.6rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text2);
-    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+    padding:3px 10px; background:var(--bg3); border:1px solid var(--border2);
+    font-family:var(--font-mono); font-size:0.6rem; letter-spacing:1.5px; text-transform:uppercase; color:var(--text2);
+    clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
   }
-  .modal-price-row { display:flex; align-items:center; justify-content:space-between; margin-top:1rem; }
+  .modal-price-row { display:flex; align-items:center; justify-content:space-between; margin-top:1rem; gap:1rem; flex-wrap:wrap; }
   .modal-price { font-family:var(--font-title); font-size:2.5rem; color:var(--red); letter-spacing:2px; }
+  .modal-actions { display:flex; gap:0.5rem; flex-wrap:wrap; }
 
   /* ── CART PAGE ── */
   .cart-layout { display:grid; grid-template-columns:1fr 340px; gap:2rem; padding-top:64px; }
-  .cart-items { padding: 3rem 3rem 3rem 4rem; }
-  .cart-sidebar { padding: 3rem 4rem 3rem 0; }
+  .cart-items { padding:3rem 3rem 3rem 4rem; }
+  .cart-sidebar { padding:3rem 4rem 3rem 0; }
   .cart-item {
     display:flex; align-items:center; gap:1.5rem; padding:1.2rem;
-    background: var(--bg2); border: 1px solid var(--border2); margin-bottom:1rem;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
-    transition: border-color 0.2s, transform 0.25s cubic-bezier(0.22,1,0.36,1);
-    animation: slideInLeft 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    background:var(--bg2); border:1px solid var(--border2); margin-bottom:1rem;
+    clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+    transition:border-color 0.2s, transform 0.25s cubic-bezier(0.22,1,0.36,1);
+    animation:slideInLeft 0.4s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes slideInLeft {
-    from { opacity:0; transform:translateX(-20px); }
-    to   { opacity:1; transform:none; }
-  }
-  .cart-item:hover { border-color: var(--border); transform: translateX(4px); }
-  .cart-item-emoji { font-size:2.8rem; flex-shrink:0; }
+  @keyframes slideInLeft { from{opacity:0;transform:translateX(-20px)} to{opacity:1;transform:none} }
+  .cart-item:hover { border-color:var(--border); transform:translateX(4px); }
+  .cart-item-thumb { font-size:2.8rem; flex-shrink:0; }
   .cart-item-info { flex:1; }
   .cart-item-bundle { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:2px; text-transform:uppercase; }
   .cart-item-name { font-weight:700; font-size:1rem; margin:2px 0; }
   .cart-item-rarity { font-family:var(--font-mono); font-size:0.6rem; color:var(--text2); }
   .cart-item-price { font-family:var(--font-title); font-size:1.5rem; color:var(--red); flex-shrink:0; }
-  .cart-item-remove { background:none; border:none; color:var(--text3); cursor:pointer; font-size:1.1rem; flex-shrink:0; transition: color 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
-  .cart-item-remove:hover { color:var(--red); transform: scale(1.3) rotate(90deg); }
+  .cart-item-remove {
+    background:none; border:none; color:var(--text3); cursor:pointer;
+    font-size:1.1rem; flex-shrink:0;
+    transition:color 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .cart-item-remove:hover { color:var(--red); transform:scale(1.3) rotate(90deg); }
   .cart-empty { text-align:center; padding:6rem 2rem; }
-  .cart-empty-icon { font-size:4rem; margin-bottom:1rem; opacity:0.3; animation: float 3s ease-in-out infinite; }
+  .cart-empty-icon { font-size:4rem; margin-bottom:1rem; opacity:0.3; animation:float 3s ease-in-out infinite; }
   @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
   .cart-empty h3 { font-family:var(--font-title); font-size:1.5rem; letter-spacing:2px; color:var(--text2); margin-bottom:0.5rem; }
   .cart-empty p { color:var(--text3); font-size:0.85rem; }
   .summary-box {
-    background: var(--bg2); border: 1px solid var(--border); padding:1.8rem;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
-    position: sticky; top:80px;
-    animation: slideInRight 0.5s 0.1s cubic-bezier(0.22,1,0.36,1) both;
+    background:var(--bg2); border:1px solid var(--border); padding:1.8rem;
+    clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%);
+    position:sticky; top:80px;
+    animation:slideInRight 0.5s 0.1s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes slideInRight {
-    from { opacity:0; transform:translateX(20px); }
-    to   { opacity:1; transform:none; }
-  }
+  @keyframes slideInRight { from{opacity:0;transform:translateX(20px)} to{opacity:1;transform:none} }
   .summary-title { font-family:var(--font-title); font-size:1.5rem; letter-spacing:2px; margin-bottom:1.5rem; }
   .summary-row { display:flex; justify-content:space-between; margin-bottom:0.8rem; color:var(--text2); font-size:0.9rem; }
   .summary-divider { border:none; border-top:1px solid var(--border2); margin:1rem 0; }
@@ -395,11 +425,11 @@
   .form-group { display:flex; flex-direction:column; gap:4px; }
   .form-label { font-family:var(--font-mono); font-size:0.65rem; color:var(--text3); letter-spacing:2px; text-transform:uppercase; }
   .form-input {
-    padding: 0.6rem 0.8rem; background: var(--bg3); border: 1px solid var(--border2);
-    color: var(--text); font-family: var(--font-body); font-size:0.9rem; outline:none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    padding:0.6rem 0.8rem; background:var(--bg3); border:1px solid var(--border2);
+    color:var(--text); font-family:var(--font-body); font-size:0.9rem; outline:none;
+    transition:border-color 0.2s, box-shadow 0.2s;
   }
-  .form-input:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,70,85,0.1); }
+  .form-input:focus { border-color:var(--red); box-shadow:0 0 0 3px rgba(255,70,85,0.1); }
   .form-input::placeholder { color:var(--text3); }
   .payment-tabs { display:flex; gap:0.5rem; margin-bottom:0.8rem; }
   .payment-tab {
@@ -409,25 +439,22 @@
     transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);
     clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
   }
-  .payment-tab.active { background:var(--red); border-color:var(--red); color:#fff; transform: translateY(-2px); }
+  .payment-tab.active { background:var(--red); border-color:var(--red); color:#fff; transform:translateY(-2px); }
   .payment-tab:hover:not(.active) { border-color:var(--border); color:var(--text); }
 
   /* ── LOGIN ── */
   .auth-page {
     min-height:100vh; display:flex; align-items:center; justify-content:center;
     padding-top:64px;
-    background: radial-gradient(ellipse 50% 60% at 30% 50%, rgba(255,70,85,0.06) 0%, transparent 60%);
+    background:radial-gradient(ellipse 50% 60% at 30% 50%,rgba(255,70,85,0.06) 0%,transparent 60%);
   }
   .auth-box {
-    background:var(--bg2); border:1px solid var(--border);
-    padding:3rem; width:100%; max-width:420px;
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    animation: authIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+    background:var(--bg2); border:1px solid var(--border); padding:3rem;
+    width:100%; max-width:420px;
+    clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
+    animation:authIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
   }
-  @keyframes authIn {
-    from { opacity:0; transform:scale(0.93) translateY(16px); }
-    to   { opacity:1; transform:none; }
-  }
+  @keyframes authIn { from{opacity:0;transform:scale(0.93) translateY(16px)} to{opacity:1;transform:none} }
   .auth-logo { font-family:var(--font-title); font-size:2.5rem; letter-spacing:3px; text-align:center; margin-bottom:0.5rem; }
   .auth-logo span { color:var(--red); }
   .auth-sub { text-align:center; color:var(--text3); font-family:var(--font-mono); font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; margin-bottom:2.5rem; }
@@ -440,8 +467,7 @@
   }
   .auth-tab:first-child { clip-path:polygon(8px 0%,100% 0%,100% 100%,0% 100%); }
   .auth-tab:last-child  { clip-path:polygon(0 0,calc(100% - 8px) 0%,100% 100%,0% 100%); }
-  .auth-tab.active { background:var(--red); border-color:var(--red); color:#fff; transform: translateY(-2px); }
-  /* slide between login / register */
+  .auth-tab.active { background:var(--red); border-color:var(--red); color:#fff; transform:translateY(-2px); }
   .auth-form-wrap { overflow:hidden; }
   .auth-form-inner { display:flex; width:200%; transition:transform 0.4s cubic-bezier(0.22,1,0.36,1); }
   .auth-form-inner.show-register { transform:translateX(-50%); }
@@ -454,7 +480,7 @@
   .admin-layout { display:flex; min-height:100vh; padding-top:64px; }
   .admin-sidebar {
     width:220px; flex-shrink:0; background:var(--bg2); border-right:1px solid var(--border2);
-    padding: 2rem 0; position:sticky; top:64px; height:calc(100vh - 64px); overflow-y:auto;
+    padding:2rem 0; position:sticky; top:64px; height:calc(100vh - 64px); overflow-y:auto;
   }
   .admin-nav-title { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:3px; text-transform:uppercase; padding:0 1.5rem; margin-bottom:1rem; }
   .admin-nav-item {
@@ -467,7 +493,7 @@
   .admin-nav-item .icon { font-size:1rem; }
   .admin-content { flex:1; padding:3rem; min-width:0; }
   .admin-panel { display:none; }
-  .admin-panel.active { display:block; animation: pageIn 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+  .admin-panel.active { display:block; animation:pageIn 0.35s cubic-bezier(0.22,1,0.36,1) both; }
   .admin-header { margin-bottom:2.5rem; }
   .admin-header h2 { font-family:var(--font-title); font-size:2rem; letter-spacing:3px; text-transform:uppercase; }
   .admin-header p { color:var(--text2); font-size:0.85rem; margin-top:4px; }
@@ -476,12 +502,12 @@
   .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1rem; margin-bottom:2.5rem; }
   .stat-card {
     background:var(--bg2); border:1px solid var(--border2); padding:1.3rem;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+    clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);
     position:relative; overflow:hidden;
-    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
+    transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s;
   }
-  .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: var(--red); }
-  .stat-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--red); }
+  .stat-card:hover { transform:translateY(-4px); box-shadow:0 8px 24px rgba(0,0,0,0.3); }
   .stat-val { font-family:var(--font-title); font-size:2rem; letter-spacing:2px; margin-bottom:2px; }
   .stat-lbl { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:2px; text-transform:uppercase; }
 
@@ -493,7 +519,7 @@
     color:var(--text3); border-bottom:1px solid var(--border2);
   }
   .data-table td { padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.03); font-size:0.9rem; color:var(--text2); vertical-align:middle; }
-  .data-table tr { transition: background 0.15s; }
+  .data-table tr { transition:background 0.15s; }
   .data-table tr:hover td { background:var(--bg3); color:var(--text); }
   .data-table .name-cell { color:var(--text); font-weight:600; }
   .tbl-btn {
@@ -502,7 +528,7 @@
     letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
     transition:all 0.2s; clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
   }
-  .tbl-btn:hover { border-color:var(--red); color:var(--red); transform: translateY(-1px); }
+  .tbl-btn:hover { border-color:var(--red); color:var(--red); transform:translateY(-1px); }
   .tbl-btn.danger:hover { border-color:#ff6060; color:#ff6060; }
   .tbl-wrap { background:var(--bg2); border:1px solid var(--border2); overflow-x:auto; clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%); }
 
@@ -515,20 +541,17 @@
     outline:none; appearance:none; cursor:pointer;
     transition:border-color 0.2s, box-shadow 0.2s;
   }
-  .form-select:focus { border-color:var(--red); box-shadow: 0 0 0 3px rgba(255,70,85,0.1); }
+  .form-select:focus { border-color:var(--red); box-shadow:0 0 0 3px rgba(255,70,85,0.1); }
   .form-textarea {
     padding:0.6rem 0.8rem; background:var(--bg3); border:1px solid var(--border2);
     color:var(--text); font-family:var(--font-body); font-size:0.9rem;
     resize:vertical; min-height:80px; outline:none;
     transition:border-color 0.2s, box-shadow 0.2s;
   }
-  .form-textarea:focus { border-color:var(--red); box-shadow: 0 0 0 3px rgba(255,70,85,0.1); }
+  .form-textarea:focus { border-color:var(--red); box-shadow:0 0 0 3px rgba(255,70,85,0.1); }
 
   /* ── ORDER BADGES ── */
-  .order-badge {
-    padding:3px 8px; font-family:var(--font-mono); font-size:0.55rem; letter-spacing:1.5px; text-transform:uppercase;
-    clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%);
-  }
+  .order-badge { padding:3px 8px; font-family:var(--font-mono); font-size:0.55rem; letter-spacing:1.5px; text-transform:uppercase; clip-path:polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
   .badge-pending   { background:#3A2C1A; color:var(--gold-light); }
   .badge-delivered { background:#1A3A2A; color:var(--cyan); }
   .badge-cancelled { background:#2A1A1A; color:#F08080; }
@@ -538,11 +561,11 @@
   .order-card {
     background:var(--bg2); border:1px solid var(--border2); padding:1.5rem; margin-bottom:1rem;
     clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px));
-    transition: border-color 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-    animation: slideInLeft 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    transition:border-color 0.2s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    animation:slideInLeft 0.4s cubic-bezier(0.22,1,0.36,1) both;
   }
-  .order-card:hover { border-color:var(--border); transform: translateX(6px); }
-  .order-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; }
+  .order-card:hover { border-color:var(--border); transform:translateX(6px); }
+  .order-card-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem; }
   .order-id { font-family:var(--font-mono); font-size:0.7rem; color:var(--text3); letter-spacing:2px; }
   .order-items-mini { display:flex; gap:0.5rem; flex-wrap:wrap; }
   .order-mini-item { display:flex; align-items:center; gap:6px; background:var(--bg3); padding:4px 10px; font-size:0.8rem; color:var(--text2); }
@@ -555,8 +578,7 @@
     clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));
     display:none; align-items:center; gap:12px;
     font-family:var(--font-body); font-weight:600; font-size:0.9rem;
-    transform:translateX(120%);
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    transform:translateX(120%); transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
     min-width:260px;
   }
   #toast.show { display:flex; transform:translateX(0); }
@@ -567,15 +589,15 @@
     margin:0 4rem 3rem; background:var(--bg2); border:1px solid var(--border);
     padding:2.5rem 3rem; display:flex; align-items:center; justify-content:space-between;
     clip-path:polygon(0 0,calc(100% - 24px) 0,100% 24px,100% 100%,24px 100%,0 calc(100% - 24px));
-    position:relative; overflow:hidden;
+    position:relative; overflow:hidden; flex-wrap:wrap; gap:1.5rem;
   }
   .featured-banner::before {
     content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
-    background: linear-gradient(to bottom, var(--red), var(--gold));
+    background:linear-gradient(to bottom,var(--red),var(--gold));
   }
   .featured-banner-text h3 { font-family:var(--font-title); font-size:1.8rem; letter-spacing:2px; margin-bottom:4px; }
   .featured-banner-text p { color:var(--text2); font-size:0.85rem; }
-  .featured-banner-emoji { font-size:3.5rem; animation: float 3s ease-in-out infinite; }
+  .featured-banner-emoji { font-size:3.5rem; animation:float 3s ease-in-out infinite; }
   .featured-price { font-family:var(--font-title); font-size:2.5rem; color:var(--gold-light); letter-spacing:2px; }
 
   /* ── FOOTER ── */
@@ -590,15 +612,19 @@
   .footer-links { display:flex; gap:2rem; }
   .footer-col h4 { font-family:var(--font-mono); font-size:0.6rem; color:var(--text3); letter-spacing:3px; text-transform:uppercase; margin-bottom:0.8rem; }
   .footer-col a {
-    display:flex; align-items:center; gap:4px;
-    color:var(--text2); font-size:0.85rem; margin-bottom:4px;
-    cursor:pointer; transition:color 0.2s, transform 0.2s; text-decoration:none;
+    display:flex; align-items:center; gap:4px; color:var(--text2);
+    font-size:0.85rem; margin-bottom:4px; cursor:pointer;
+    transition:color 0.2s, transform 0.2s; text-decoration:none;
   }
   .footer-col a::before { content:'›'; opacity:0; transform:translateX(-6px); transition:opacity 0.2s, transform 0.2s; }
   .footer-col a:hover { color:var(--red); transform:translateX(6px); }
   .footer-col a:hover::before { opacity:1; transform:none; }
   .footer-copy { width:100%; border-top:1px solid var(--border2); padding-top:1.5rem; color:var(--text3); font-family:var(--font-mono); font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; }
   .footer-copy span { color:var(--red); }
+
+  /* ── REVEAL ANIMATION (Intersection Observer) ── */
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.5s, transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity:1; transform:none; }
 
   /* ── RESPONSIVE ── */
   @media(max-width:900px){
@@ -676,42 +702,68 @@
     </div>
   </section>
 
-  <div class="featured-banner">
+  <div class="featured-banner reveal">
     <div class="featured-banner-text">
       <h3>Bundle da Semana: RECON</h3>
       <p>Pistola, rifle, faca — o set completo com efeitos de trajetória únicos</p>
     </div>
-    <div style="display:flex;align-items:center;gap:2rem">
+    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
       <div class="featured-banner-emoji">🔫</div>
       <div>
         <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:2px">A partir de</div>
         <div class="featured-price">R$79</div>
       </div>
-      <button class="btn-primary" onclick="showPage('home');document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Ver Bundle</button>
+      <button class="btn-primary" onclick="showPage('home');setTimeout(()=>document.getElementById('catalog').scrollIntoView({behavior:'smooth'}),100)">Ver Bundle</button>
     </div>
   </div>
 
   <section class="section" id="catalog">
-    <div class="section-header">
+    <div class="section-header reveal">
       <div class="section-label">Arsenal Completo</div>
       <h2 class="section-title">Catálogo de <span>Skins</span></h2>
     </div>
-    <div class="filters">
-      <button class="filter-btn active" onclick="filterSkins('all',this)">Todas</button>
-      <button class="filter-btn" onclick="filterSkins('pistol',this)">Pistolas</button>
-      <button class="filter-btn" onclick="filterSkins('rifle',this)">Rifles</button>
-      <button class="filter-btn" onclick="filterSkins('smg',this)">SMGs</button>
-      <button class="filter-btn" onclick="filterSkins('sniper',this)">Snipers</button>
-      <button class="filter-btn" onclick="filterSkins('melee',this)">Facas</button>
-      <select class="rarity-select" id="rarityFilter" onchange="applyFilters()">
-        <option value="all">Qualquer Raridade</option>
-        <option value="Select">Select</option>
-        <option value="Premium">Premium</option>
-        <option value="Exclusive">Exclusive</option>
-        <option value="Ultra">Ultra Edition</option>
-      </select>
+
+    <!-- CATALOG TABS -->
+    <div class="catalog-tabs">
+      <button class="catalog-tab active" onclick="switchCatalogTab('skins',this)">Todas as Skins</button>
+      <button class="catalog-tab" onclick="switchCatalogTab('bundles',this)">Por Bundle</button>
+      <button class="catalog-tab" onclick="switchCatalogTab('wishlist',this)">Favoritos ♥</button>
     </div>
-    <div class="skins-grid" id="skinsGrid"></div>
+
+    <!-- SKINS TAB -->
+    <div id="tab-skins">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar skin ou bundle..." oninput="onSearch(this)">
+        <button class="search-clear" id="searchClearBtn" onclick="clearSearch()">✕</button>
+      </div>
+      <div class="filters">
+        <button class="filter-btn active" onclick="filterSkins('all',this)">Todas</button>
+        <button class="filter-btn" onclick="filterSkins('pistol',this)">Pistolas</button>
+        <button class="filter-btn" onclick="filterSkins('rifle',this)">Rifles</button>
+        <button class="filter-btn" onclick="filterSkins('smg',this)">SMGs</button>
+        <button class="filter-btn" onclick="filterSkins('sniper',this)">Snipers</button>
+        <button class="filter-btn" onclick="filterSkins('melee',this)">Facas</button>
+        <select class="rarity-select" id="rarityFilter" onchange="applyFilters()">
+          <option value="all">Qualquer Raridade</option>
+          <option value="Select">Select</option>
+          <option value="Premium">Premium</option>
+          <option value="Exclusive">Exclusive</option>
+          <option value="Ultra">Ultra Edition</option>
+        </select>
+      </div>
+      <div class="skins-grid" id="skinsGrid"></div>
+    </div>
+
+    <!-- BUNDLES TAB -->
+    <div id="tab-bundles" style="display:none">
+      <div class="bundles-grid" id="bundlesGrid"></div>
+    </div>
+
+    <!-- WISHLIST TAB -->
+    <div id="tab-wishlist" style="display:none">
+      <div id="wishlistGrid" class="skins-grid"></div>
+    </div>
   </section>
 
   <footer>
@@ -787,7 +839,6 @@
       </div>
       <div class="auth-form-wrap">
         <div class="auth-form-inner" id="authInner">
-          <!-- LOGIN SLOT -->
           <div class="auth-form-slot">
             <div class="auth-form">
               <div class="form-group">
@@ -802,7 +853,6 @@
               <div class="auth-hint">Demo admin: <span>admin@vaultex.gg</span> / <span>admin123</span><br>Demo usuário: <span>user@vaultex.gg</span> / <span>user123</span></div>
             </div>
           </div>
-          <!-- REGISTER SLOT -->
           <div class="auth-form-slot">
             <div class="auth-form">
               <div class="form-group">
@@ -853,7 +903,6 @@
       <div class="admin-nav-item" onclick="showAdminPanel('allorders',this)"><span class="icon">📦</span>Pedidos</div>
     </div>
     <div class="admin-content">
-      <!-- DASHBOARD -->
       <div class="admin-panel active" id="panel-dashboard">
         <div class="admin-header">
           <h2>Dashboard</h2>
@@ -873,12 +922,8 @@
           </table>
         </div>
       </div>
-      <!-- PRODUCTS -->
       <div class="admin-panel" id="panel-products">
-        <div class="admin-header">
-          <h2>Produtos</h2>
-          <p>Gerencie o catálogo de skins</p>
-        </div>
+        <div class="admin-header"><h2>Produtos</h2><p>Gerencie o catálogo de skins</p></div>
         <div class="tbl-wrap">
           <table class="data-table">
             <thead><tr><th>Icon</th><th>Nome</th><th>Bundle</th><th>Raridade</th><th>Preço</th><th>Ações</th></tr></thead>
@@ -886,12 +931,8 @@
           </table>
         </div>
       </div>
-      <!-- ADD PRODUCT -->
       <div class="admin-panel" id="panel-addproduct">
-        <div class="admin-header">
-          <h2>Adicionar Produto</h2>
-          <p>Cadastre uma nova skin no catálogo</p>
-        </div>
+        <div class="admin-header"><h2>Adicionar Produto</h2><p>Cadastre uma nova skin no catálogo</p></div>
         <div class="add-form">
           <div class="form-row">
             <div class="form-group"><label class="form-label">Nome da Skin</label><input class="form-input" id="ap-name" placeholder="Ex: Vandal RECON"></div>
@@ -920,15 +961,7 @@
           </div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Preço (R$)</label><input class="form-input" type="number" id="ap-price" placeholder="79.90"></div>
-            <div class="form-group"><label class="form-label">Emoji de Fallback</label><input class="form-input" id="ap-emoji" placeholder="🔫" style="font-size:1.2rem"></div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">URL da Imagem <span style="color:var(--text3);font-size:0.65rem">(cole o link direto da imagem)</span></label>
-            <div style="display:flex;gap:0.8rem;align-items:flex-start">
-              <input class="form-input" id="ap-img" placeholder="https://..." style="flex:1" oninput="previewAdminImg(this.value)">
-              <div id="ap-img-preview" style="width:72px;height:72px;flex-shrink:0;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden">🖼️</div>
-            </div>
-            <div style="font-family:var(--font-mono);font-size:0.58rem;color:var(--text3);margin-top:4px;letter-spacing:1px">Deixe em branco para usar apenas o emoji. Se a URL falhar, o emoji é exibido automaticamente.</div>
+            <div class="form-group"><label class="form-label">Emoji</label><input class="form-input" id="ap-emoji" placeholder="🔫" style="font-size:1.2rem"></div>
           </div>
           <div class="form-group"><label class="form-label">Descrição</label><textarea class="form-textarea" id="ap-desc" placeholder="Descreva a skin, efeitos visuais, animações..."></textarea></div>
           <div style="display:flex;gap:1rem;margin-top:0.5rem">
@@ -937,7 +970,6 @@
           </div>
         </div>
       </div>
-      <!-- USERS -->
       <div class="admin-panel" id="panel-users">
         <div class="admin-header"><h2>Usuários</h2><p>Gerenciar contas registradas</p></div>
         <div class="tbl-wrap">
@@ -947,7 +979,6 @@
           </table>
         </div>
       </div>
-      <!-- ALL ORDERS -->
       <div class="admin-panel" id="panel-allorders">
         <div class="admin-header"><h2>Todos os Pedidos</h2><p>Histórico completo de vendas</p></div>
         <div class="tbl-wrap">
@@ -962,7 +993,7 @@
 </div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="skinModal">
+<div class="modal-overlay" id="skinModal" onclick="handleModalOverlayClick(event)">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div id="modalContent"></div>
@@ -971,41 +1002,93 @@
 
 <script>
 // ==================== DATA ====================
+// Paletas de cor por bundle para as ilustrações SVG geradas
+const bundlePalettes = {
+  'Reaver':     ['#FF4655','#8B0000','#2A0000'],
+  'Elderflame': ['#FF6B35','#CC4400','#1A0A00'],
+  'Glitchpop':  ['#9B5DE5','#00F5FF','#1A0A2E'],
+  'Ion':        ['#00E5CC','#0066CC','#000A1A'],
+  'Horizon':    ['#5B6EEB','#9B59B6','#0A0A1A'],
+  'Prime 2.0':  ['#C8A850','#8B6914','#1A1200'],
+  'Sensation':  ['#FF69B4','#FF1493','#1A0010'],
+  'Magepunk':   ['#C8A850','#4A90E2','#1A1000'],
+  'Nebula':     ['#7B68EE','#4169E1','#000814'],
+  'Sovereign':  ['#FFD700','#DAA520','#1A1400'],
+  'DEFAULT':    ['#FF4655','#22222F','#0F0F13'],
+};
+
+// Gera um SVG como data URL para usar como background de card
+function genSkinSVG(skin) {
+  const pal = bundlePalettes[skin.bundle] || bundlePalettes['DEFAULT'];
+  const c1 = pal[0], c2 = pal[1], c3 = pal[2];
+  const id = 'g'+skin.id;
+  // Formas geométricas Valorant-style (losangos, linhas)
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='240' height='180' viewBox='0 0 240 180'>
+    <defs>
+      <linearGradient id='${id}a' x1='0%' y1='0%' x2='100%' y2='100%'>
+        <stop offset='0%' stop-color='${c3}'/>
+        <stop offset='100%' stop-color='${c2}' stop-opacity='0.5'/>
+      </linearGradient>
+    </defs>
+    <rect width='240' height='180' fill='url(#${id}a)'/>
+    <polygon points='120,20 200,90 120,160 40,90' fill='none' stroke='${c1}' stroke-width='1' opacity='0.25'/>
+    <polygon points='120,50 170,90 120,130 70,90' fill='none' stroke='${c1}' stroke-width='1' opacity='0.35'/>
+    <line x1='0' y1='90' x2='240' y2='90' stroke='${c1}' stroke-width='0.5' opacity='0.2'/>
+    <line x1='120' y1='0' x2='120' y2='180' stroke='${c1}' stroke-width='0.5' opacity='0.2'/>
+    <circle cx='120' cy='90' r='55' fill='none' stroke='${c1}' stroke-width='0.5' opacity='0.15'/>
+  </svg>`;
+  return 'data:image/svg+xml;base64,' + btoa(svg);
+}
+
 let skins = [
-  {id:1, name:'Vandal Reaver', bundle:'Reaver', type:'rifle', rarity:'Premium', price:89.90, emoji:'🔫', img:'img/VandalReaver.jpg', desc:'Estética dark com runas encantadas. Efeitos de tiro únicos com partículas vermelhas e som de impacto profundo.', tags:['Animação Tiro','Kill Effects','Finisher']},
-  {id:2, name:'Vandal Elderflame', bundle:'Elderflame', type:'rifle', rarity:'Ultra', price:149.90, emoji:'🐉', img:'img/VandalElderflame.jpg', desc:'Transforme seu rifle em um dragão vivo. Cada tiro libera chamas e a skin evolui conforme você elimina inimigos.', tags:['Animação','Dragão','Kill FX','Upgrade']},
-  {id:3, name:'Classic Glitchpop', bundle:'Glitchpop', type:'pistol', rarity:'Premium', price:59.90, emoji:'💜', img:'img/ClassicGlitchpop.jpg', desc:'Skin cyberpunk com efeitos digitais e glitch. Sons de sintetizador e cores neon.', tags:['Cyberpunk','Glitch','Sons']},
-  {id:4, name:'Operator Ion', bundle:'Ion', type:'sniper', rarity:'Exclusive', price:119.90, emoji:'⚡', img:'img/OperatorIon.jpg', desc:'Design futurista de energia pura. Efeitos de plasma ao acertar e animação de recarga espetacular.', tags:['Futurista','Plasma','Som']},
-  {id:5, name:'Karambit Reaver', bundle:'Reaver', type:'melee', rarity:'Ultra', price:199.90, emoji:'🗡️', img:'img/KarambitReaver.jpg', desc:'A faca mais cobiçada do jogo. Animações de inspeção exclusivas e brilho vermelho intenso ao se mover.', tags:['Faca','Ultra','Animação']},
-  {id:6, name:'Frenzy Glitchpop', bundle:'Glitchpop', type:'pistol', rarity:'Premium', price:69.90, emoji:'🌈', img:'img/FrenzyGlitchpop.jpg', desc:'Versão atualizada com novos efeitos e paleta expandida. Sons digitais marcantes.', tags:['Cyberpunk','Atualizado']},
-  {id:7, name:'Spectre Horizon', bundle:'Horizon', type:'smg', rarity:'Select', price:39.90, emoji:'🌌', img:'img/SpectreHorizon.jpg', desc:'Efeitos de nebulosa espacial. Skin minimalista com detalhes de galáxia e som suave.', tags:['Espacial','Minimalista']},
-  {id:8, name:'Guardian Prime', bundle:'Prime 2.0', type:'rifle', rarity:'Premium', price:79.90, emoji:'👑', img:'img/PrimeGuardian.jpg', desc:'Clássico reinventado. Linhas douradas sobre fundo escuro com sound FX icônico.', tags:['Clássico','Gold','Som']},
-  {id:9, name:'Frenzy Sensation', bundle:'Sensation', type:'pistol', rarity:'Select', price:34.90, emoji:'✨', img:'img/SensationFrenzy.jpg', desc:'Brilhos e partículas coloridas. Leve e alegre — perfeito pra quem quer estilo em cada round.', tags:['Colorido','Partículas']},
-  {id:10, name:'Marshal Magepunk', bundle:'Magepunk', type:'sniper', rarity:'Exclusive', price:99.90, emoji:'⚗️', img:'img/MarshalMagepunk.jpg', desc:'Tecnologia mágica steampunk. Engrenagens animadas e efeitos de descarga elétrica ao mirar.', tags:['Steampunk','Magia','Animação']},
-  {id:11, name:'Ares Nebula', bundle:'Nebula', type:'rifle', rarity:'Select', price:44.90, emoji:'🌠', img:'img/AresNebulosa.jpg', desc:'Estrelas e nebulosas no cano da arma. Skin elegante para jogadores que apreciam o cosmos.', tags:['Espacial','Elegante']},
-  {id:12, name:'Knife Sovereign', bundle:'Sovereign', type:'melee', rarity:'Ultra', price:179.90, emoji:'🏆', img:'img/EspadaSoberania.jpg', desc:'O dourado supremo. Ornamentação real com animação de celebração exclusiva. Ostentação em cada round.', tags:['Dourado','Real','Ostentatório']},
+  {id:1,  name:'Vandal Reaver',    bundle:'Reaver',    type:'rifle',  rarity:'Premium',   price:89.90,  emoji:'🔫', desc:'Estética dark com runas encantadas. Efeitos de tiro únicos com partículas vermelhas e som de impacto profundo.', tags:['Animação Tiro','Kill Effects','Finisher']},
+  {id:2,  name:'Vandal Elderflame',bundle:'Elderflame',type:'rifle',  rarity:'Ultra',     price:149.90, emoji:'🐉', desc:'Transforme seu rifle em um dragão vivo. Cada tiro libera chamas e a skin evolui conforme você elimina inimigos.', tags:['Animação','Dragão','Kill FX','Upgrade']},
+  {id:3,  name:'Classic Glitchpop',bundle:'Glitchpop', type:'pistol', rarity:'Premium',   price:59.90,  emoji:'💜', desc:'Skin cyberpunk com efeitos digitais e glitch. Sons de sintetizador e cores neon.', tags:['Cyberpunk','Glitch','Sons']},
+  {id:4,  name:'Operator Ion',     bundle:'Ion',       type:'sniper', rarity:'Exclusive', price:119.90, emoji:'⚡', desc:'Design futurista de energia pura. Efeitos de plasma ao acertar e animação de recarga espetacular.', tags:['Futurista','Plasma','Som']},
+  {id:5,  name:'Karambit Reaver',  bundle:'Reaver',    type:'melee',  rarity:'Ultra',     price:199.90, emoji:'🗡️', desc:'A faca mais cobiçada do jogo. Animações de inspeção exclusivas e brilho vermelho intenso ao se mover.', tags:['Faca','Ultra','Animação']},
+  {id:6,  name:'Frenzy Glitchpop', bundle:'Glitchpop', type:'pistol', rarity:'Premium',   price:69.90,  emoji:'🌈', desc:'Versão atualizada com novos efeitos e paleta expandida. Sons digitais marcantes.', tags:['Cyberpunk','Atualizado']},
+  {id:7,  name:'Spectre Horizon',  bundle:'Horizon',   type:'smg',    rarity:'Select',    price:39.90,  emoji:'🌌', desc:'Efeitos de nebulosa espacial. Skin minimalista com detalhes de galáxia e som suave.', tags:['Espacial','Minimalista']},
+  {id:8,  name:'Guardian Prime',   bundle:'Prime 2.0', type:'rifle',  rarity:'Premium',   price:79.90,  emoji:'👑', desc:'Clássico reinventado. Linhas douradas sobre fundo escuro com sound FX icônico.', tags:['Clássico','Gold','Som']},
+  {id:9,  name:'Frenzy Sensation', bundle:'Sensation', type:'pistol', rarity:'Select',    price:34.90,  emoji:'✨', desc:'Brilhos e partículas coloridas. Leve e alegre — perfeito pra quem quer estilo em cada round.', tags:['Colorido','Partículas']},
+  {id:10, name:'Marshal Magepunk', bundle:'Magepunk',  type:'sniper', rarity:'Exclusive', price:99.90,  emoji:'⚗️', desc:'Tecnologia mágica steampunk. Engrenagens animadas e efeitos de descarga elétrica ao mirar.', tags:['Steampunk','Magia','Animação']},
+  {id:11, name:'Ares Nebula',      bundle:'Nebula',    type:'rifle',  rarity:'Select',    price:44.90,  emoji:'🌠', desc:'Estrelas e nebulosas no cano da arma. Skin elegante para jogadores que apreciam o cosmos.', tags:['Espacial','Elegante']},
+  {id:12, name:'Knife Sovereign',  bundle:'Sovereign', type:'melee',  rarity:'Ultra',     price:179.90, emoji:'🏆', desc:'O dourado supremo. Ornamentação real com animação de celebração exclusiva. Ostentação em cada round.', tags:['Dourado','Real','Ostentatório']},
+  {id:13, name:'Phantom Reaver',   bundle:'Reaver',    type:'rifle',  rarity:'Premium',   price:84.90,  emoji:'🔫', desc:'Estética dark aplicada ao Phantom. Runas vermelhas e efeitos sonoros profundos em cada tiro.', tags:['Animação','Kill Effects']},
+  {id:14, name:'Classic Ion',      bundle:'Ion',       type:'pistol', rarity:'Exclusive', price:79.90,  emoji:'⚡', desc:'A pistola padrão com o tema de energia futurista do bundle Ion. Brilha em azul ao recarregar.', tags:['Futurista','Energia']},
+  {id:15, name:'Stinger Glitchpop',bundle:'Glitchpop', type:'smg',    rarity:'Premium',   price:64.90,  emoji:'🎮', desc:'SMG com toda a energia cyberpunk do Glitchpop. Sons sintetizados e cores vibrantes.', tags:['Cyberpunk','SMG']},
+  {id:16, name:'Bulldog Magepunk', bundle:'Magepunk',  type:'rifle',  rarity:'Exclusive', price:94.90,  emoji:'⚗️', desc:'Rifle com engrenagens mágicas animadas. Efeitos elétricos ao eliminar inimigos.', tags:['Steampunk','Animação']},
 ];
 
 let users = [
-  {id:1, name:'Admin Master', email:'admin@vaultex.gg', pass:'admin123', role:'admin', orders:[]},
-  {id:2, name:'Gamer Demo', email:'user@vaultex.gg', pass:'user123', role:'user', orders:[]},
+  {id:1,name:'Admin Master',email:'admin@vaultex.gg',pass:'admin123',role:'admin',orders:[]},
+  {id:2,name:'Gamer Demo',  email:'user@vaultex.gg', pass:'user123', role:'user', orders:[]},
 ];
 
 let orders = [];
 let cart = [];
+let wishlist = []; // BUG FIX: wishlist antes não existia
 let currentUser = null;
 let currentFilter = 'all';
 let currentRarity = 'all';
+let searchQuery = '';
+let currentCatalogTab = 'skins';
 
 // ==================== UTILS ====================
-function fmt(n){ return 'R$ ' + n.toFixed(2).replace('.',','); }
+function fmt(n){ return 'R$ '+n.toFixed(2).replace('.',','); }
 
-function toast(msg){
+function toast(msg, isError){
   const t = document.getElementById('toast');
   document.getElementById('toastMsg').textContent = msg;
-  t.style.display = 'flex';
-  t.offsetHeight; // force reflow so transition fires
-  t.classList.add('show');
+  t.style.borderColor = isError ? '#ff6060' : 'var(--red)';
+  t.classList.remove('show');
+  t.style.display = 'none';
+  // FIX: forçar reflow fora do display:none
+  requestAnimationFrame(()=>{
+    t.style.display = 'flex';
+    requestAnimationFrame(()=>{
+      t.classList.add('show');
+    });
+  });
   clearTimeout(t._timer);
   t._timer = setTimeout(()=>{
     t.classList.remove('show');
@@ -1018,25 +1101,37 @@ function showPage(p){
   document.getElementById('page-'+p).classList.add('active');
   document.querySelectorAll('.nav-link').forEach(x=>x.classList.remove('active'));
   window.scrollTo(0,0);
-  if(p==='home')   renderSkins();
-  if(p==='cart')   renderCart();
+  if(p==='home'){
+    renderSkins();
+    initReveal();
+  }
+  if(p==='cart')   { renderCart(); renderPaymentFields(selectedPayment); } // FIX: sincronizar payment
   if(p==='orders') renderOrders();
   if(p==='admin')  refreshAdmin();
+}
+
+// ==================== REVEAL (Intersection Observer) ====================
+function initReveal(){
+  const els = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  },{threshold:0.12});
+  els.forEach(el=>obs.observe(el));
 }
 
 // ==================== AUTH ====================
 function switchAuthTab(tab){
   const inner = document.getElementById('authInner');
-  document.getElementById('tabLogin').classList.toggle('active', tab==='login');
-  document.getElementById('tabRegister').classList.toggle('active', tab==='register');
-  inner.classList.toggle('show-register', tab==='register');
+  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
+  document.getElementById('tabRegister').classList.toggle('active',tab==='register');
+  inner.classList.toggle('show-register',tab==='register');
 }
 
 function doLogin(){
   const email = document.getElementById('loginEmail').value.trim();
-  const pass = document.getElementById('loginPass').value;
+  const pass  = document.getElementById('loginPass').value;
   const u = users.find(x=>x.email===email && x.pass===pass);
-  if(!u){ toast('❌ Credenciais inválidas'); return; }
+  if(!u){ toast('❌ Credenciais inválidas',true); return; }
   currentUser = u;
   document.getElementById('loginNavBtn').style.display='none';
   document.getElementById('logoutNavBtn').style.display='flex';
@@ -1050,11 +1145,11 @@ function doRegister(){
   const email = document.getElementById('regEmail').value.trim();
   const pass  = document.getElementById('regPass').value;
   const pass2 = document.getElementById('regPass2').value;
-  if(!name||!email||!pass){ toast('❌ Preencha todos os campos'); return; }
-  if(pass.length < 6){ toast('❌ Senha deve ter mínimo 6 caracteres'); return; }
-  if(pass!==pass2){ toast('❌ As senhas não conferem'); return; }
-  if(users.find(u=>u.email===email)){ toast('❌ E-mail já cadastrado'); return; }
-  const u = {id:users.length+1, name, email, pass, role:'user', orders:[]};
+  if(!name||!email||!pass){ toast('❌ Preencha todos os campos',true); return; }
+  if(pass.length < 6){ toast('❌ Senha deve ter mínimo 6 caracteres',true); return; }
+  if(pass!==pass2){ toast('❌ As senhas não conferem',true); return; }
+  if(users.find(u=>u.email===email)){ toast('❌ E-mail já cadastrado',true); return; }
+  const u = {id:users.length+1,name,email,pass,role:'user',orders:[]};
   users.push(u);
   currentUser = u;
   document.getElementById('loginNavBtn').style.display='none';
@@ -1072,65 +1167,173 @@ function logout(){
   showPage('home');
 }
 
+// ==================== CATALOG TABS ====================
+function switchCatalogTab(tab, btn){
+  currentCatalogTab = tab;
+  document.querySelectorAll('.catalog-tab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-skins').style.display    = tab==='skins'    ? '' : 'none';
+  document.getElementById('tab-bundles').style.display  = tab==='bundles'  ? '' : 'none';
+  document.getElementById('tab-wishlist').style.display = tab==='wishlist' ? '' : 'none';
+  if(tab==='bundles')  renderBundles();
+  if(tab==='wishlist') renderWishlist();
+}
+
+// ==================== SEARCH ====================
+function onSearch(el){
+  searchQuery = el.value.trim().toLowerCase();
+  document.getElementById('searchClearBtn').classList.toggle('visible', searchQuery.length > 0);
+  renderSkins();
+}
+function clearSearch(){
+  document.getElementById('searchInput').value = '';
+  searchQuery = '';
+  document.getElementById('searchClearBtn').classList.remove('visible');
+  renderSkins();
+}
+
 // ==================== SKINS ====================
 function rarityClass(r){
   return r==='Ultra'?'rarity-ultra':r==='Exclusive'?'rarity-exclusive':r==='Premium'?'rarity-premium':'rarity-select-only';
 }
-function skinThumb(s, size){
-  const isModal = size==='modal';
-  const h = isModal ? '220px' : '180px';
-  const emojiSize = isModal ? '6rem' : '5rem';
-  if(s.img && s.img.trim()){
-    return `<img src="${s.img}" alt="${s.name}" style="width:100%;height:${h};object-fit:contain;object-position:center;padding:12px;transition:transform 0.3s" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="skin-card-emoji" style="display:none;align-items:center;justify-content:center;width:100%;height:${h};font-size:${emojiSize}">${s.emoji||'🔫'}</div>`;
-  }
-  return `<div class="skin-card-emoji" style="font-size:${emojiSize}">${s.emoji||'🔫'}</div>`;
-}
+
 function renderSkins(){
   const grid = document.getElementById('skinsGrid');
   let list = skins.filter(s=>{
     const typeOk = currentFilter==='all'||s.type===currentFilter;
     const rarOk  = currentRarity==='all'||s.rarity===currentRarity;
-    return typeOk && rarOk;
+    const searchOk = !searchQuery || s.name.toLowerCase().includes(searchQuery) || s.bundle.toLowerCase().includes(searchQuery);
+    return typeOk && rarOk && searchOk;
   });
   if(list.length===0){
     grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:4rem;color:var(--text3);font-family:var(--font-mono);letter-spacing:2px;font-size:0.75rem">NENHUM RESULTADO ENCONTRADO</div>';
     return;
   }
-  grid.innerHTML = list.map((s,i)=>`
-    <div class="skin-card" style="animation-delay:${i*0.05}s" onclick="openModal(${s.id})">
+  grid.innerHTML = list.map((s,i)=>skinCardHTML(s,i)).join('');
+}
+
+function skinCardHTML(s, i){
+  const inCart = cart.some(x=>x.id===s.id);
+  const inWish = wishlist.includes(s.id);
+  const bgSvg  = genSkinSVG(s);
+  return `
+    <div class="skin-card${inCart?' in-cart':''}${inWish?' in-wishlist':''}" style="animation-delay:${(i||0)*0.05}s" onclick="openModal(${s.id})">
       <div class="skin-card-glow"></div>
-      <div class="skin-card-thumb" style="background:linear-gradient(135deg,var(--bg3),var(--bg2))">
+      <div class="skin-card-thumb">
+        <img class="skin-canvas" src="${bgSvg}" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.9">
         <div class="skin-card-rarity ${rarityClass(s.rarity)}">${s.rarity}</div>
-        ${skinThumb(s,'card')}
+        <button class="wish-btn" onclick="event.stopPropagation();toggleWish(${s.id})" title="Favoritar" style="color:${inWish?'var(--red)':'var(--text3)'}">♥</button>
+        <div class="in-cart-badge">✔ No carrinho</div>
+        <div class="skin-card-emoji">${s.emoji}</div>
       </div>
       <div class="skin-card-info">
         <div class="skin-card-bundle">${s.bundle}</div>
         <div class="skin-card-name">${s.name}</div>
         <div class="skin-card-bottom">
           <div class="skin-card-price"><span>preço</span>${fmt(s.price)}</div>
-          <button class="skin-card-add" onclick="event.stopPropagation();addToCart(${s.id})">+</button>
+          <button class="skin-card-add" onclick="event.stopPropagation();${inCart?'':' addToCart('+s.id+')'}" ${inCart?'disabled':''} title="${inCart?'Já no carrinho':'Adicionar'}">
+            ${inCart?'✔':'+'}
+          </button>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
 }
+
 function filterSkins(type, btn){
   currentFilter = type;
   document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
   btn.classList.add('active');
   renderSkins();
 }
+
 function applyFilters(){
   currentRarity = document.getElementById('rarityFilter').value;
   renderSkins();
+}
+
+// ==================== BUNDLES ====================
+function renderBundles(){
+  const grouped = {};
+  skins.forEach(s=>{
+    if(!grouped[s.bundle]) grouped[s.bundle]=[];
+    grouped[s.bundle].push(s);
+  });
+  const grid = document.getElementById('bundlesGrid');
+  grid.innerHTML = Object.entries(grouped).map(([bundle,items],i)=>{
+    const minP = Math.min(...items.map(s=>s.price));
+    const maxP = Math.max(...items.map(s=>s.price));
+    const priceRange = minP===maxP ? fmt(minP) : `${fmt(minP)} — ${fmt(maxP)}`;
+    return `
+      <div class="bundle-card" style="animation-delay:${i*0.06}s" onclick="filterToBundle('${bundle}')">
+        <div class="bundle-card-header">
+          <div class="bundle-name">${bundle}</div>
+          <div class="bundle-count">${items.length} SKINS</div>
+        </div>
+        <div class="bundle-skins-preview">
+          ${items.slice(0,4).map(s=>`<span class="bundle-skin-chip">${s.emoji} ${s.name}</span>`).join('')}
+          ${items.length>4?`<span class="bundle-skin-chip" style="color:var(--red)">+${items.length-4} mais</span>`:''}
+        </div>
+        <div class="bundle-price-label">Faixa de preço</div>
+        <div class="bundle-price-range">${priceRange}</div>
+      </div>`;
+  }).join('');
+}
+
+function filterToBundle(bundle){
+  // Vai para aba de skins filtrando por bundle via search
+  switchCatalogTab('skins', document.querySelector('.catalog-tab'));
+  document.getElementById('searchInput').value = bundle;
+  searchQuery = bundle.toLowerCase();
+  document.getElementById('searchClearBtn').classList.add('visible');
+  currentFilter = 'all';
+  currentRarity = 'all';
+  document.querySelectorAll('.filter-btn').forEach(x=>x.classList.remove('active'));
+  document.querySelector('.filter-btn').classList.add('active');
+  document.getElementById('rarityFilter').value = 'all';
+  renderSkins();
+  document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+}
+
+// ==================== WISHLIST ====================
+function toggleWish(id){
+  if(wishlist.includes(id)){
+    wishlist = wishlist.filter(x=>x!==id);
+    toast('💔 Removido dos favoritos');
+  } else {
+    wishlist.push(id);
+    toast('♥ Adicionado aos favoritos!');
+  }
+  // Atualiza card no grid sem re-render completo (evita flicker)
+  renderSkins();
+  if(currentCatalogTab==='wishlist') renderWishlist();
+}
+
+function renderWishlist(){
+  const grid = document.getElementById('wishlistGrid');
+  if(wishlist.length===0){
+    grid.innerHTML=`<div class="wishlist-empty" style="grid-column:1/-1">
+      <div class="wishlist-empty-icon">♥</div>
+      <h3>Sem Favoritos</h3>
+      <p>Clique no ♥ em qualquer skin para salvar aqui</p>
+    </div>`;
+    return;
+  }
+  const list = skins.filter(s=>wishlist.includes(s.id));
+  grid.innerHTML = list.map((s,i)=>skinCardHTML(s,i)).join('');
 }
 
 // ==================== MODAL ====================
 function openModal(id){
   const s = skins.find(x=>x.id===id);
   if(!s) return;
+  const inCart = cart.some(x=>x.id===s.id);
+  const inWish = wishlist.includes(s.id);
+  const bgSvg  = genSkinSVG(s);
   document.getElementById('modalContent').innerHTML = `
-    <div class="modal-thumb">${skinThumb(s,'modal')}</div>
+    <div style="position:relative;height:180px;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;overflow:hidden">
+      <img src="${bgSvg}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.7">
+      <div style="font-size:6rem;position:relative;filter:drop-shadow(0 4px 30px rgba(255,70,85,0.4))">${s.emoji}</div>
+    </div>
     <div class="modal-bundle">${s.bundle}</div>
     <div class="modal-name">${s.name}</div>
     <div class="modal-desc">${s.desc}</div>
@@ -1141,46 +1344,61 @@ function openModal(id){
     </div>
     <div class="modal-price-row">
       <div class="modal-price">${fmt(s.price)}</div>
-      <button class="btn-primary" onclick="addToCart(${s.id});closeModal()">Adicionar ao Carrinho</button>
-    </div>
-  `;
+      <div class="modal-actions">
+        <button class="btn-ghost" onclick="toggleWish(${s.id});document.querySelector('.modal-wish').textContent=wishlist.includes(${s.id})?'♥ Salvo':'♥ Salvar'" style="height:40px;padding:0 1rem;font-size:0.75rem;border-color:${inWish?'var(--red)':'var(--border)'};color:${inWish?'var(--red)':'var(--text)'}">
+          <span class="modal-wish">${inWish?'♥ Salvo':'♥ Salvar'}</span>
+        </button>
+        ${inCart
+          ? `<button class="btn-ghost" style="height:40px;padding:0 1rem;font-size:0.75rem;color:var(--cyan);border-color:rgba(0,229,204,0.4);cursor:default">✔ No Carrinho</button>`
+          : `<button class="btn-primary" style="height:40px;padding:0 1.2rem;font-size:0.8rem" onclick="addToCart(${s.id});closeModal()">+ Carrinho</button>`
+        }
+      </div>
+    </div>`;
   document.getElementById('skinModal').classList.add('open');
 }
+
 function closeModal(){
   document.getElementById('skinModal').classList.remove('open');
 }
-document.getElementById('skinModal').addEventListener('click',function(e){
-  if(e.target===this) closeModal();
-});
+
+// FIX: handler no overlay, não re-declarado no HTML
+function handleModalOverlayClick(e){
+  if(e.target===document.getElementById('skinModal')) closeModal();
+}
 
 // ==================== CART ====================
 function addToCart(id){
   const s = skins.find(x=>x.id===id);
   if(!s) return;
-  const existing = cart.find(x=>x.id===id);
-  if(existing){ toast('Já está no carrinho!'); return; }
+  if(cart.some(x=>x.id===id)){ toast('Já está no carrinho!'); return; }
   cart.push({...s});
   updateCartCount();
   toast('⚡ '+s.name+' adicionado!');
+  renderSkins(); // atualiza badge "no carrinho" nos cards
 }
+
 function updateCartCount(){
   const el = document.getElementById('cartCount');
   el.textContent = cart.length;
+  // FIX: bump animation com requestAnimationFrame em vez de void offsetWidth
   el.classList.remove('bump');
-  void el.offsetWidth;
-  el.classList.add('bump');
-  setTimeout(()=>el.classList.remove('bump'), 300);
+  requestAnimationFrame(()=>{ el.classList.add('bump'); });
+  setTimeout(()=>el.classList.remove('bump'), 350);
 }
+
 function removeFromCart(id){
   cart = cart.filter(x=>x.id!==id);
   updateCartCount();
   renderCart();
+  renderPaymentFields(selectedPayment);
+  renderSkins(); // FIX: atualiza badge nos cards ao remover do carrinho
 }
+
 function renderCart(){
   const list = document.getElementById('cartList');
   const sub = cart.reduce((a,x)=>a+x.price,0);
   document.getElementById('summarySubtotal').textContent = fmt(sub);
-  document.getElementById('summaryTotal').textContent = fmt(sub);
+  document.getElementById('summaryTotal').textContent    = fmt(sub);
   if(cart.length===0){
     list.innerHTML=`<div class="cart-empty">
       <div class="cart-empty-icon">🛒</div>
@@ -1190,9 +1408,14 @@ function renderCart(){
     </div>`;
     return;
   }
+  const bgMap = {};
+  skins.forEach(s=>{ bgMap[s.id]=genSkinSVG(s); });
   list.innerHTML = cart.map((s,i)=>`
     <div class="cart-item" style="animation-delay:${i*0.07}s">
-      <div class="cart-item-emoji">${s.emoji}</div>
+      <div class="cart-item-thumb" style="position:relative;width:52px;height:52px;flex-shrink:0">
+        <img src="${bgMap[s.id]||''}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;opacity:0.8">
+        <span style="position:relative;z-index:1;font-size:2rem;display:flex;align-items:center;justify-content:center;width:100%;height:100%">${s.emoji}</span>
+      </div>
       <div class="cart-item-info">
         <div class="cart-item-bundle">${s.bundle}</div>
         <div class="cart-item-name">${s.name}</div>
@@ -1202,17 +1425,20 @@ function renderCart(){
       <button class="cart-item-remove" onclick="removeFromCart(${s.id})">✕</button>
     </div>
   `).join('');
-  renderPaymentFields(selectedPayment);
 }
+
 let selectedPayment = 'pix';
+
 function setPayment(btn, type){
   selectedPayment = type;
   document.querySelectorAll('.payment-tab').forEach(x=>x.classList.remove('active'));
   btn.classList.add('active');
   renderPaymentFields(type);
 }
+
 function renderPaymentFields(type){
   const el = document.getElementById('paymentFields');
+  if(!el) return;
   if(type==='pix'){
     el.innerHTML=`<div style="background:var(--bg3);border:1px solid var(--border2);padding:1rem;text-align:center">
       <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--cyan);letter-spacing:2px;margin-bottom:4px">CHAVE PIX</div>
@@ -1221,10 +1447,10 @@ function renderPaymentFields(type){
     </div>`;
   } else if(type==='card'){
     el.innerHTML=`
-      <div class="form-group"><label class="form-label">Número do Cartão</label><input class="form-input" placeholder="0000 0000 0000 0000"></div>
+      <div class="form-group"><label class="form-label">Número do Cartão</label><input class="form-input" placeholder="0000 0000 0000 0000" maxlength="19"></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Validade</label><input class="form-input" placeholder="MM/AA"></div>
-        <div class="form-group"><label class="form-label">CVV</label><input class="form-input" placeholder="000"></div>
+        <div class="form-group"><label class="form-label">Validade</label><input class="form-input" placeholder="MM/AA" maxlength="5"></div>
+        <div class="form-group"><label class="form-label">CVV</label><input class="form-input" placeholder="000" maxlength="4"></div>
       </div>`;
   } else {
     el.innerHTML=`<div style="background:var(--bg3);border:1px solid var(--border2);padding:1rem;text-align:center">
@@ -1234,6 +1460,7 @@ function renderPaymentFields(type){
     </div>`;
   }
 }
+
 function finishOrder(){
   if(!currentUser){ toast('⚠️ Faça login para finalizar'); showPage('login'); return; }
   if(cart.length===0){ toast('Carrinho vazio!'); return; }
@@ -1244,13 +1471,15 @@ function finishOrder(){
     items: [...cart],
     total: cart.reduce((a,x)=>a+x.price,0),
     payment: selectedPayment,
-    status:'pending',
+    status: 'pending',
     date: new Date().toLocaleDateString('pt-BR')
   };
   orders.push(order);
   currentUser.orders.push(order.id);
-  cart=[];
+  // FIX: remover do carrinho e dos cards ANTES de navegar
+  cart = [];
   updateCartCount();
+  renderSkins();
   toast('🎉 Pedido '+order.id+' confirmado!');
   showPage('orders');
 }
@@ -1274,13 +1503,13 @@ function renderOrders(){
           <div class="order-id">Pedido ${o.id}</div>
           <div style="font-size:0.75rem;color:var(--text3);margin-top:2px">${o.date} · ${o.payment.toUpperCase()}</div>
         </div>
-        <div style="display:flex;align-items:center;gap:1rem">
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
           <span class="order-badge ${o.status==='delivered'?'badge-delivered':o.status==='cancelled'?'badge-cancelled':'badge-pending'}">${o.status==='delivered'?'Entregue':o.status==='cancelled'?'Cancelado':'Pendente'}</span>
           <span style="font-family:var(--font-title);font-size:1.3rem;color:var(--red)">${fmt(o.total)}</span>
         </div>
       </div>
       <div class="order-items-mini">
-        ${o.items.map(i=>`<div class="order-mini-item">${i.emoji} ${i.name}</div>`).join('')}
+        ${o.items.map(it=>`<div class="order-mini-item">${it.emoji} ${it.name}</div>`).join('')}
       </div>
     </div>
   `).join('');
@@ -1297,9 +1526,7 @@ function showAdminPanel(panel, el){
   if(panel==='users')     renderUsersTable();
   if(panel==='allorders') renderAllOrders();
 }
-function refreshAdmin(){
-  renderDashboard();
-}
+function refreshAdmin(){ renderDashboard(); }
 function renderDashboard(){
   const rev = orders.reduce((a,o)=>a+o.total,0);
   document.getElementById('statRevenue').textContent = fmt(rev);
@@ -1316,7 +1543,7 @@ function renderDashboard(){
 function renderProductsTable(){
   document.getElementById('productsTable').innerHTML = skins.map(s=>`
     <tr>
-      <td style="font-size:1.5rem">${s.img?`<img src="${s.img}" style="width:40px;height:40px;object-fit:contain" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">${s.emoji}`:s.emoji}</td>
+      <td style="font-size:1.5rem">${s.emoji}</td>
       <td class="name-cell">${s.name}</td>
       <td>${s.bundle}</td>
       <td><span class="skin-card-rarity ${rarityClass(s.rarity)}" style="font-family:var(--font-mono);font-size:0.55rem;letter-spacing:1.5px">${s.rarity}</span></td>
@@ -1326,8 +1553,12 @@ function renderProductsTable(){
   `).join('');
 }
 function deleteSkin(id){
-  if(!confirm('Remover esta skin do catálogo?')) return;
+  if(!confirm('Remover esta skin do catálogo? Itens no carrinho serão removidos também.')) return;
+  // FIX: remove do carrinho também
+  cart = cart.filter(x=>x.id!==id);
+  wishlist = wishlist.filter(x=>x!==id);
   skins = skins.filter(s=>s.id!==id);
+  updateCartCount();
   renderProductsTable();
   toast('🗑️ Skin removida');
 }
@@ -1373,14 +1604,6 @@ function setOrderStatus(id, status){
   renderAllOrders();
   toast('Status atualizado!');
 }
-function previewAdminImg(url){
-  const p = document.getElementById('ap-img-preview');
-  if(url && url.trim()){
-    p.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:contain;padding:4px" onerror="this.parentElement.innerHTML='❌'">`;
-  } else {
-    p.innerHTML = '🖼️';
-  }
-}
 function addProduct(){
   const name   = document.getElementById('ap-name').value.trim();
   const bundle = document.getElementById('ap-bundle').value.trim();
@@ -1388,22 +1611,21 @@ function addProduct(){
   const rarity = document.getElementById('ap-rarity').value;
   const price  = parseFloat(document.getElementById('ap-price').value);
   const emoji  = document.getElementById('ap-emoji').value.trim()||'🔫';
-  const img    = document.getElementById('ap-img').value.trim();
   const desc   = document.getElementById('ap-desc').value.trim();
-  if(!name||!bundle||!price){ toast('❌ Preencha os campos obrigatórios'); return; }
-  skins.push({id:Date.now(), name, bundle, type, rarity, price, emoji, img, desc, tags:['Novo']});
+  if(!name||!bundle||!price||isNaN(price)){ toast('❌ Preencha os campos obrigatórios',true); return; }
+  skins.push({id:Date.now(),name,bundle,type,rarity,price,emoji,desc,tags:['Novo']});
   clearAddForm();
   toast('✅ Skin "'+name+'" adicionada!');
-  showAdminPanel('products', document.querySelector('.admin-nav-item:nth-child(2)'));
+  showAdminPanel('products',document.querySelector('.admin-nav-item:nth-child(2)'));
 }
 function clearAddForm(){
-  ['ap-name','ap-bundle','ap-price','ap-emoji','ap-img','ap-desc'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('ap-img-preview').innerHTML='🖼️';
+  ['ap-name','ap-bundle','ap-price','ap-emoji','ap-desc'].forEach(id=>{ document.getElementById(id).value=''; });
 }
 
 // INIT
 renderSkins();
 renderPaymentFields('pix');
+initReveal();
 </script>
 </body>
 </html>
